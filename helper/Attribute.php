@@ -1,8 +1,9 @@
 <?php
 
 namespace rk\helper;
+use rk\helper\ArrayHelper;
 
-class Attribute
+class Attribute extends ArrayHelper
 {
     
 }
