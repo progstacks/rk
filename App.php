@@ -1,11 +1,20 @@
 <?php
 
 namespace rk;
-
-class App
+use rk\core\Rk;
+/**
+ * @method $this->setName()
+ */
+class App extends Rk
 {
-    private static $_name;
-    function __construct($config){
+    public function __construct($config)
+    {
+        $this->config = $config;
+    }
 
+    public function start(){
+        echo $this->getName();
     }
 }
+
+

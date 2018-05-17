@@ -1,8 +1,8 @@
 <?php
 
 namespace rk\base;
-
-class Controller
+use rk\base\View;
+class Controller extends View
 {
     
 }
