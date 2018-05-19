@@ -13,7 +13,15 @@ class App extends Rk
     }
 
     public function start(){
-        echo $this->getName();
+        
+    }
+
+    public function get($filter, callable $func=null){
+        $url = $this->getRequestUrl();
+        
+        if(strpos($url,$filter)==0){
+            call_user_func($func,[$request,$reponse]);
+        }        
     }
 }
 

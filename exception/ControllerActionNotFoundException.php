@@ -1,10 +1,12 @@
 <?php
+
 namespace app\base\exception;
-use Exception;
-class ClassNotFoundException extends Exception 
+
+class ControllerActionNotFoundException extends Exception
 {
     public function __construct($message, $code = 0, Exception $previous = null) {
-        // some code    
+        // some code
+    
         // make sure everything is assigned properly
         parent::__construct($message, $code, $previous);
     }
