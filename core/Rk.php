@@ -9,4 +9,7 @@ class Rk extends Loader
     public function getName(){
         return $this->config['name'];
     }
+    public function getDefaultController(){
+        return $this->config['defaults'];
+    }
 }

@@ -20,18 +20,28 @@ class Loader
             $this->_post[$key] = trim($value);
         }
         foreach ($_GET as $key => $value) {
-            $this->$_get[$key] = trim($value);
+            $this->_get[$key] = trim($value);
         }
         foreach ($_SERVER as $key => $value) {
-            $this->$_server[$key] = trim($value);
+            $this->_server[$key] = trim($value);
         }
-        $_request = array_merge($this->$_post, $this->$_get);
+        $this->_request = array_merge($this->_post, $this->_get);
     }
-
+    function isPost(){
+        return $this->_server['REQUEST_METHOD'] ==='POST'; 
+    }
+    function isGet(){
+        return $this->_server['REQUEST_METHOD'] ==='GET'; 
+    }
     function getRequestUrl(){
         return $this->_server['QUERY_STRING'];
     }
 
+    function getController(){
+        $parseController = explode('/',$this->_server['QUERY_STRING'])[0];
+
+        return $parseController!==''?$parseController:$this->getDefaultController();
+    }
     function __call($method, $params) {
 
         $var = lcfirst(substr($method, 3));
