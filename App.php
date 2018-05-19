@@ -3,6 +3,7 @@
 namespace rk;
 
 use rk\core\Rk;
+use rk\core\Route;
 
 /**
  * @method $this->setName()
@@ -12,13 +13,16 @@ class App extends Rk
     private $matched = false;
     public function __construct($config)
     {
-        $this->config = $config;
+        $this->loadConfig($config);
         $this->loadUserRequest();
     }
 
     public function start()
     {
-
+        $route = new Route($this->getRequestUrl());
+        $ctrl = $route->getController();
+        $action = $route->getAction();
+        $ctrl->{$action}();
     }
 
     /**
