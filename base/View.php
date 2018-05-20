@@ -5,10 +5,10 @@ use rk\helper\Config;
 class View
 {
 
-    public function render($template,$parameters=[]){
+    static public function render($template,$parameters=[]){
         \ob_start();
         \extract($parameters);
-        require $this->getTemplate($template);
+        require View::getTemplate($template);
         return \ob_get_clean();
     }
 
@@ -16,7 +16,7 @@ class View
     {
         echo "Hello World";
     }
-    private function getTemplate($template){
+    static private function getTemplate($template){
         if(strpos($template,'.')>0){
             $template = str_replace('.','\\',$template);
         }
